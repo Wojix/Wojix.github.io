@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Wojix</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script>
+    (function () {
+      const saved = localStorage.getItem("theme")
+      const system = window.matchMedia("(prefers-color-scheme: dark)").matches
+      const dark = saved ? saved === "dark" : system
+
+      document.documentElement.classList.add(dark ? "dark" : "light")
+      document.documentElement.style.colorScheme = dark ? "dark" : "light"
+    })()
+  </script>
+
+</head>
+<body>
+  <label class="theme">
+    <input type="checkbox" id="themeToggle">
+    <span class="slider"></span>
+  </label>
+
+  <div class="fade-up-group">
+    <img class="icon" style="--i:1" src="https://raw.githubusercontent.com/Wojix/Wojix.github.io/refs/heads/main/_assets/images/thinking.png" alt="" width="200" height="200">
+    
+    <h1 class="name" style="--i:1">Wojix</h1>
+    <h3 class="subtitle" style="--i:1">ポンコツビギナーエンジニア(笑)</h3>
+    
+    <i class="fa-solid fa-cake-candles fa-lg" style="--i:1; color:#808080;"></i>
+    <h4 class="about" style="--i:1">200X年1月29日</h4>
+    
+    <i class="fa-solid fa-paper-plane fa-lg" style="--i:1; color:#808080;"></i>
+    <h4 class="about" style="--i:1">Japan / 日本</h4>
+    
+    <i class="fa-solid fa-graduation-cap fa-lg" style="--i:1; color:#808080;"></i>
+    <h4 class="about" style="--i:1">学生</h4>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
