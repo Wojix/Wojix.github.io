@@ -1,17 +1,38 @@
+:root {
+  --border-inherit2: #e4e4e7;
+}
+
+html.light {
+  background-color: white;
+  color: black;
+}
+
+html.dark {
+  background-color: black;
+  color: white;
+  --border-inherit2: #27272a;
+}
+
 body {
   background-color: inherit;
   color: inherit;
   font-family: "Noto Sans JP", sans-serif;
   font-optical-sizing: auto;
-  font-weight: 100;
+  font-weight: 400;
   font-style: normal;
   padding: 80px;
+}
+
+a {
+  display: block;
+  text-decoration: none;
+  color: inherit;
 }
 
 .fade-up-group > * {
   opacity: 0;
   transform: translateY(10px) translateZ(0);
-  animation: 
+  animation:
     fadeUpMove 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards,
     fadeUpOpacity 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   animation-delay: calc(var(--i, 0) * 0.12s), calc(var(--i, 0) * 0.12s);
@@ -25,26 +46,19 @@ body {
   font-weight: 400;
   color: #a1a1aa;
   margin-top: -25px;
+  margin-bottom: 2em;
 }
 
 .about {
   font-weight: 400;
   color: #a1a1aa;
+  margin-top: 0.3em;
+  margin-bottom: 0.3em;
 }
 
 .icon {
   border-radius: 50%;
   box-shadow: 0 7px 20px rgba(0, 0, 0, 0.25);
-}
-
-html.light {
-  background-color: white;
-  color: black;
-}
-
-html.dark {
-  background-color: black;
-  color: white;
 }
 
 .icon-title {
@@ -53,6 +67,69 @@ html.dark {
   gap: 8px;
 }
 
+.youtube,
+.twitter,
+.discord,
+.xbox,
+.steam,
+.github,
+.duolingo,
+.coming2 {
+  background-color: inherit;
+  color: inherit;
+  border-radius: 20px;
+  box-shadow: 0px 5px 16px -12px #a1a1aa;
+  border: 2px solid var(--border-inherit2);
+  transition: border-color 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.youtube,
+.github,
+.duolingo,
+.coming2 {
+  width: 400px;
+  height: 135px;
+}
+
+.twitter,
+.discord,
+.xbox,
+.steam {
+  width: 200px;
+  height: 135px;
+}
+
+.youtube:hover {
+  border-color: red;
+}
+
+.twitter:hover {
+  border-color: #3BC1FF;
+}
+
+.discord:hover {
+  border-color: #7289DA;
+}
+
+.xbox:hover {
+  border-color: #77BB44;
+}
+
+.steam:hover {
+  border-color: #2a475e;
+}
+
+.github:hover {
+  border-color: #2B3137;
+}
+
+.duolingo:hover {
+  border-color: #58cc02;
+}
+
+.coming2:hover {
+  border-color: white;
+}
 
 @keyframes fadeUpMove {
   to {
