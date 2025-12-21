@@ -23,13 +23,13 @@ body {
 
 .subtitle {
   font-weight: 400;
-  color: #808080;
+  color: #a1a1aa;
   margin-top: -25px;
 }
 
 .about {
   font-weight: 400;
-  color: #808080;
+  color: #a1a1aa;
 }
 
 .icon {
@@ -46,6 +46,13 @@ html.dark {
   background-color: black;
   color: white;
 }
+
+.icon-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
 
 @keyframes fadeUpMove {
   to {
