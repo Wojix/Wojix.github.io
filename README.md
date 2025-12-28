@@ -1,5 +1,7 @@
 # Wojix.github.io
 
+WIP
+
 All by me✅
 
 安心安全のwojicle製✅
