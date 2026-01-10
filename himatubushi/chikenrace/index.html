@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>チキンレース</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+<style>
+body{
+  font-family:sans-serif;
+  text-align:center;
+  padding-top:40px;
+}
+#theme{
+  font-size:24px;
+}
+#timer-wrapper{
+  position:relative;
+  width:240px;
+  height:80px;
+  margin:20px auto;
+}
+#timer{
+  font-size:48px;
+  line-height:80px;
+}
+#mask{
+  position:absolute;
+  inset:0;
+  background:#000;
+  color:#fff;
+  font-size:48px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  visibility:hidden;
+}
+button{
+  font-size:20px;
+  padding:10px 20px;
+  margin:10px;
+}
+#result{
+  font-size:24px;
+  margin-top:20px;
+}
+</style>
+</head>
+<body>
+
+<div id="theme"></div>
+
+<div id="timer-wrapper">
+  <div id="timer">0.000</div>
+  <div id="mask">？</div>
+</div>
+
+<button id="start">スタート</button>
+<button id="stop" disabled>ストップ</button>
+
+<div id="result"></div>
+
+<script>
+let target
+let startTime
+let interval
+let masked=false
+let running=false
+
+const theme=document.getElementById("theme")
+const timer=document.getElementById("timer")
+const mask=document.getElementById("mask")
+const startBtn=document.getElementById("start")
+const stopBtn=document.getElementById("stop")
+const result=document.getElementById("result")
+
+function format(t){
+  return t.toFixed(3)
+}
+
+function startGame(){
+  target=Math.floor(Math.random()*31)+30
+  theme.textContent="お題："+target+"秒"
+  result.textContent=""
+  masked=false
+  mask.style.visibility="hidden"
+  mask.className=""
+  startTime=performance.now()
+  startBtn.disabled=true
+  stopBtn.disabled=false
+  running=true
+
+  interval=setInterval(()=>{
+    const elapsed=(performance.now()-startTime)/1000
+    timer.textContent=format(elapsed)
+
+    if(elapsed>=10 && !masked){
+      masked=true
+      mask.style.visibility="visible"
+      mask.className="animate__animated animate__flash"
+    }
+  },10)
+}
+
+function stopGame(){
+  const elapsed=(performance.now()-startTime)/1000
+  clearInterval(interval)
+  mask.style.visibility="hidden"
+
+  const diff=Math.abs(elapsed-target)
+  result.textContent="スコア："+format(diff)+" 秒"
+
+  startBtn.disabled=false
+  stopBtn.disabled=true
+  running=false
+}
+
+startBtn.onclick=()=>{
+  if(!running) startGame()
+}
+
+stopBtn.onclick=()=>{
+  if(running) stopGame()
+}
+
+document.addEventListener("keydown",e=>{
+  if(e.code!=="Space") return
+  e.preventDefault()
+  if(!running){
+    startGame()
+  }else{
+    stopGame()
+  }
+})
+</script>
+
+</body>
+</html>
